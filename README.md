@@ -16,7 +16,7 @@ In this lecture, we will cover the following topics:
 The repository is organized as follows:
 
 - `main.cpp`: This file contains a template for the main code to demonstrate array operations. You can modify and expand on this code during the lecture.
-- `Makefile`: A Makefile is provided to compile and run the code. You can use the command `make` to compile the code and `make run` to execute it.
+- `Makefile`: A Makefile is provided to compile and run the code. You can use the command `make` to compile the code and `make test` to execute it.
 - `catch.hpp`: The Catch unit testing framework header file. It is included in the template for writing test cases and validating the functionality of array operations.
 - `README.md`: This file provides an overview of the template repository and instructions for using it.
 
@@ -28,7 +28,7 @@ To get started with the lecture exercises and coding practice, follow these step
 2. Clone the forked repository to your local development environment.
 3. Explore the `main.cpp` file and read the provided code and comments.
 4. Modify the code as instructed during the lecture to implement different array operations and algorithms.
-5. Use the provided `Makefile` to compile and run the code. You can use the command `make` to compile and `make run` to execute the code.
+5. Use the provided `Makefile` to compile and run the code. You can use the command `make` to compile and `make test` to execute the code.
 6. Write additional test cases in the `main.cpp` file using the Catch framework to validate the correctness of your code.
 7. Commit and push your changes to your forked repository regularly to track your progress.
 8. Feel free to create branches, experiment with different approaches, and collaborate with your peers.

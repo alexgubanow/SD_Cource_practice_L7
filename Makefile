@@ -1,10 +1,27 @@
-all: a.out
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra
 
-a.out:
-	g++ -std=c++11 hello.cpp
+# Main executable name
+EXECUTABLE = main
 
-test: a.out
-	./a.out
+# Source files
+SRCS = main.cpp
 
+# Object files
+OBJS = $(SRCS:.cpp=.o)
+
+# Compile the source files into object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Build the executable
+$(EXECUTABLE): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(EXECUTABLE)
+
+# Clean the generated files
 clean:
-	rm a.out
+	rm -f $(OBJS) $(EXECUTABLE)
+
+test: $(EXECUTABLE)
+	./$(EXECUTABLE)
+

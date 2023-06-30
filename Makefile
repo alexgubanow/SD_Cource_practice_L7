@@ -1,14 +1,15 @@
+OBJ_DIR ?= obj
+BIN_DIR ?= bld
+
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 
 # Main executable name
-EXECUTABLE = main
+EXECUTABLE = $(BIN_DIR)/main
 
-# Source files
-SRCS = main.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+SRCS += $(wildcard *.cpp)
+SRCS += $(wildcard *.c)
+OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
 # Compile the source files into object files
 %.o: %.cpp
@@ -23,5 +24,5 @@ clean:
 	rm -f $(OBJS) $(EXECUTABLE)
 
 test: $(EXECUTABLE)
-	./$(EXECUTABLE)
+	$(EXECUTABLE)
 

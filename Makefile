@@ -12,7 +12,7 @@ SRCS += $(wildcard *.c)
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
 # Compile the source files into object files
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Build the executable

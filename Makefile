@@ -1,8 +1,9 @@
 OBJ_DIR ?= obj
 BIN_DIR ?= bld
 
-CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra
+CC = clang
+CXX = clang++
+CXXFLAGS = -Wall -Wextra
 
 # Main executable name
 EXECUTABLE = $(BIN_DIR)/main
@@ -12,12 +13,22 @@ SRCS += $(wildcard *.c)
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 
 # Compile the source files into object files
-$(OBJ_DIR)/%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Build the executable
-$(EXECUTABLE): $(OBJS)
+$(EXECUTABLE): $(OBJS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(EXECUTABLE)
+
+.PHONY: clean all test
+
+all: $(EXECUTABLE)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 # Clean the generated files
 clean:
@@ -25,4 +36,3 @@ clean:
 
 test: $(EXECUTABLE)
 	$(EXECUTABLE)
-

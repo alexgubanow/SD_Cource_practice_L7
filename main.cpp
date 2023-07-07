@@ -1,12 +1,12 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
 
-int add( int a, int b ) {
+int add(int a, int b) {
   return a + b;
 }
 
-TEST_CASE( "check if add() works" ) {
-    REQUIRE( add(0, 0) == 0 );
-    REQUIRE( add(1, 1) == 2 );
-    REQUIRE( add(-1, -1) == -2 );
+TEST_CASE("check if add() works") {
+  CHECK(add(0, 0) == 0);
+  CHECK(add(1, 1) == 2);
+  CHECK(add(-1, -1) == -2);
 }
